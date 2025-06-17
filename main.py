@@ -120,24 +120,24 @@ def generate_data(num_samples = 1000000):
 if __name__ == "__main__":
 # Generate synthetic dataset
     num_samples = 1000000
-    df = generate_data(num_samples)
+    df = generate_data(num_samples) #generating original dataset
 
-    #visual_analysis(df)
+    visual_analysis(df) #visiual analysis of the dataset
 
-    means = mean_values("dataset.csv")
+    means = mean_values("dataset.csv") #automatic analysis of the dataset
     std_div = standard_deviations("dataset.csv")
     category_prob = category_probabilities("dataset.csv")
 
-    generate_sample_dataset(value1_mean=means["Value1_mean"],
+    generate_sample_dataset(value1_mean=means["Value1_mean"], # generating sample dataset based on findings
                             value1_std=std_div["Value1_std"],
                             value2_mean=means["Value2_mean"],
                             value2_std=std_div["Value2_std"],
                             categories=["A", "B", "C", "D", "E"],
-                            category_probabilities=category_prob)
+                            category_probabilities=category_prob) 
 
-    visual_analysis(pd.read_csv("sample_dataset.csv"))
+    #visual_analysis(pd.read_csv("sample_dataset.csv"))
 
-    print(compare_datasets_ttest())
+    print(compare_datasets_ttest()) #comparing the original dataset with the sample dataset using T-test
 
 # Using the visiual analysis as well as the code analysis conducted, we can safely
 # assume that the dataset is, 1. Normally distributed, 2. Has a categorical variable with 5 categories, 
