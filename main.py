@@ -31,14 +31,14 @@ def visual_analysis(df):
     plt.savefig("plots/continuous_variables_distribution.png")
     plt.close()
 
-def category_probabilities(file):
+def category_probabilities(file): #We find the category ratios
     df = pd.read_csv(file, sep=";")
     category_ratios = df['Category1'].value_counts(normalize=True).sort_index()
     print("Category ratios:")
     print(category_ratios)
     return category_ratios.tolist()
 
-def standard_deviations(file):
+def standard_deviations(file): #we find the standard deviation of the continuous variables
     df = pd.read_csv(file, sep=";")
     std_value1 = df["Value1"].std()
     std_value2 = df["Value2"].std()
@@ -46,7 +46,7 @@ def standard_deviations(file):
     print(f"Standard deviation of Value2: {std_value2}")
     return {"Value1_std": std_value1, "Value2_std": std_value2}
 
-def mean_values(file):
+def mean_values(file): #we find the mean of the continuous variables
     df = pd.read_csv(file, sep=";")
     mean_value1 = df["Value1"].mean()
     mean_value2 = df["Value2"].mean()
